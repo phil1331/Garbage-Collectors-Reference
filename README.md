@@ -43,9 +43,9 @@
 ### Print the information (logs) about the garbage collector in your application
 * Add following parameter to your JVM executable: `-Xlog:gc*:file={MYFILENAME}` where `{MYFILENAME}` is for example equal to `gc.log`
 ### Info
-* `System.gc()` causes either nothing or a full STW collecting process which is why most you shouldn't call this in most applications
+* `System.gc()` causes either nothing or a full STW collecting process which is why you shouldn't call this in most applications
 * the object alignment $k$ determines the size $s$ of each object by the equation $s\equiv 0 \pmod{k}$ or $s = nk$ where $n\in\mathbb{N}_0$, where the default $k$ of most jvm's is 8 (object alignment of 8)
-* coops (compressed ordinary object pointers) are pointers to objects with 32 bit size on 64 bit systems with object alignment of 8 bytes for heap sizes less than 32 GiB
+* coops (compressed ordinary object pointers) are pointers to objects with 32 bit size on 64 bit systems with object alignment of 8 bytes for heap sizes less than 32 GiB and else of the normal processor word size (on 64-bit systems 64 bit)
 ### Common Types of Garbage Collectors in Java
 #### Stop-The-World (STW)
 * Both minor and major garbage collectors are stopping the world/program when they are executed, the minor one just collects on a smaller amount of memory
